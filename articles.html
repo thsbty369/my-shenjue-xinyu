@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>文章與分享｜湯老師 身覺心語</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sheet">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">身覺心語<span class="latin">SHEN JUE XIN YU</span></a>
+    <a class="nav-link" href="index.html">首頁</a>
+    <a class="nav-link" href="system.html">身覺心語</a>
+    <a class="nav-link active" href="articles.html">文章</a>
+    <a class="nav-link" href="services.html">課程與服務</a>
+  </div>
+</nav>
+
+<main class="page">
+
+  <div class="hero hero-side">
+    <div class="hero-text">
+      <div class="kicker">文章與分享</div>
+      <h1>湯老師寫的，和講過的</h1>
+      <p class="sub">教學文章、日常分享，還有講座與社區課程的內容整理，都會放在這裡。</p>
+    </div>
+    <img class="hero-figure" src="assets/q-articles.png" alt="Q版湯老師">
+  </div>
+
+  <section>
+    <h2 class="section-title">追蹤湯老師</h2>
+    <div id="platformList"></div>
+  </section>
+
+  <section>
+    <h2 class="section-title">文章</h2>
+    <div id="articleList"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="brand">身覺心語｜湯老師<span class="latin">SHEN JUE XIN YU</span></div>
+</footer>
+
+</div>
+
+<script>
+/* ── 維護區：之後由 AI 或湯老師直接改這兩個陣列即可，不用動版面 ──
+
+   平台連結：url 填上網址後，該平台會自動變成可點的按鈕。
+   文章：往 ARTICLES 陣列最前面加一筆物件，就會出現在最上方。
+   格式範例：
+   { title: "文章標題", date: "2026-08-01", source: "方格子",
+     summary: "一兩句話的簡介。", url: "https://..." }
+*/
+var PLATFORMS = [
+  { name: "Threads", desc: "日常的觀察與短分享", url: "" },
+  { name: "方格子", desc: "每月一到兩篇深度文章", url: "" }
+];
+
+var ARTICLES = [
+  /* 目前尚無文章，之後由此陣列增補 */
+];
+
+(function () {
+  var pWrap = document.getElementById("platformList");
+  PLATFORMS.forEach(function (p) {
+    var card = document.createElement("div");
+    card.className = "card";
+    var action = p.url
+      ? '<p style="margin-top:16px;"><a class="btn" href="' + p.url + '" target="_blank" rel="noopener">前往 ' + p.name + '</a></p>'
+      : '<p style="margin-top:16px;"><span class="chip">連結整理中，近期放上</span></p>';
+    card.innerHTML = "<h3>" + p.name + "</h3><p class=\"soft\">" + p.desc + "</p>" + action;
+    pWrap.appendChild(card);
+  });
+
+  var aWrap = document.getElementById("articleList");
+  if (ARTICLES.length === 0) {
+    var empty = document.createElement("div");
+    empty.className = "empty";
+    empty.innerHTML = "文章陸續整理中。<br>之後湯老師的教學文章與講座分享，會一篇一篇放上來。";
+    aWrap.appendChild(empty);
+    return;
+  }
+  ARTICLES.forEach(function (a) {
+    var card = document.createElement("a");
+    card.className = "article-card";
+    if (a.url) { card.href = a.url; card.target = "_blank"; card.rel = "noopener"; }
+    card.innerHTML =
+      '<div class="meta">' + (a.date || "") + (a.source ? "｜" + a.source : "") + "</div>" +
+      "<h3>" + a.title + "</h3>" +
+      "<p>" + (a.summary || "") + "</p>";
+    aWrap.appendChild(card);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+/* 身覺心語｜湯老師 個人網站 共用樣式
+   版型：陶土手札（2026-07-23 江江選定）
+   紙質米白底、金色細線框、四角水彩葉、墨綠襯線標題、編號清單。
+   讀者可能五十歲上下：正文 19px 起跳，全站最小字級 17px，行距放寬。 */
+
+:root {
+  --paper: #F7F2E6;
+  --card: #FFFDF6;
+  --ink: #3E5245;        /* 墨綠：標題與重點 */
+  --text: #4A463C;       /* 正文暖棕灰 */
+  --text-soft: #6F695C;
+  --gold: #C2A36B;
+  --gold-line: rgba(194, 163, 107, 0.42);
+  --cream: #EDE4D2;      /* 編號圓底 */
+  --sage: #7E9184;
+  --sage-soft: #EAEDE2;
+  --clay: #B97D5B;
+  --clay-soft: #F5EBDF;
+  --qbg: #F7E9DF;        /* Q 版圖的底色，用來讓裁切圖融入 */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+}
+
+body {
+  font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+  font-size: 19px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  padding: 12px;
+}
+
+h1, h2, h3, .serif {
+  font-family: "Songti TC", "Kaiti TC", "PMingLiU", serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+/* ── 金線紙框與水彩葉 ── */
+.sheet {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--gold-line);
+  border-radius: 18px;
+  min-height: calc(100vh - 24px);
+}
+.sheet::before,
+.sheet::after {
+  content: "";
+  position: absolute;
+  width: min(420px, 82vw);
+  height: min(420px, 82vw);
+  background: url("assets/leaf-corner.svg") no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+.sheet::before { top: -30px; right: -50px; transform: scaleX(-1); }
+.sheet::after  { bottom: -30px; left: -50px; transform: scaleY(-1); }
+
+/* ── 導覽 ── */
+.nav {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid var(--gold-line);
+}
+.nav-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 22px;
+}
+.nav-brand {
+  font-family: "Songti TC", "Kaiti TC", serif;
+  font-size: 21px;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  text-decoration: none;
+  margin-right: auto;
+}
+.nav-brand .latin {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+}
+.nav a.nav-link {
+  font-size: 17px;
+  color: var(--text-soft);
+  text-decoration: none;
+  padding-bottom: 3px;
+}
+.nav a.nav-link:hover { color: var(--ink); }
+.nav a.nav-link.active {
+  color: var(--ink);
+  border-bottom: 2px solid var(--gold);
+}
+
+/* ── 版面 ── */
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+section { margin-top: 88px; }
+
+.section-title {
+  font-size: 26px;
+  margin: 0 0 28px;
+  text-align: center;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 1px;
+  background: var(--gold);
+  margin: 18px auto 0;
+}
+
+p { margin: 0 0 1.2em; }
+.soft { color: var(--text-soft); }
+.note {
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--text-soft);
+}
+.center { text-align: center; }
+
+/* ── 開場 ── */
+.hero {
+  padding: 88px 0 12px;
+  text-align: center;
+}
+.hero .kicker {
+  font-size: 17px;
+  letter-spacing: 0.34em;
+  color: var(--gold);
+  margin-bottom: 30px;
+}
+.hero h1 {
+  font-size: 31px;
+  line-height: 1.95;
+  font-weight: 600;
+  margin: 0 auto;
+  max-width: 15em;
+}
+.hero .sub {
+  margin-top: 34px;
+  font-size: 18px;
+  color: var(--text-soft);
+}
+
+/* ── 編號清單（01 02 03）── */
+.numlist { margin-top: 12px; }
+.numitem {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 26px 0;
+}
+.numitem + .numitem { border-top: 1px solid var(--gold-line); }
+.numitem .num {
+  flex: none;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Songti TC", Georgia, serif;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.numitem h3 { font-size: 21px; margin: 0 0 4px; }
+.numitem p { margin: 0; color: var(--text-soft); font-size: 18px; line-height: 1.9; }
+
+/* ── 金句 ── */
+.quote {
+  margin: 76px auto 0;
+  max-width: 26em;
+  text-align: center;
+  font-family: "Songti TC", "Kaiti TC", serif;
+  font-size: 21px;
+  line-height: 2.1;
+  color: var(--ink);
+}
+.quote::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: var(--gold);
+  margin: 0 auto 28px;
+}
+.quote .by {
+  display: block;
+  margin-top: 14px;
+  font-size: 17px;
+  color: var(--text-soft);
+  font-family: "PingFang TC", sans-serif;
+}
+
+/* ── 卡片 ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--gold-line);
+  border-radius: 16px;
+  padding: 32px 28px;
+  margin-bottom: 24px;
+}
+.card h3 { font-size: 22px; margin: 0 0 14px; }
+.card p:last-child { margin-bottom: 0; }
+.tint { background: var(--sage-soft); }
+
+/* ── 圖文交織構圖 ── */
+
+/* 關於湯老師：去背照浮在有機色暈上，文字繞排，下緣藏進資格卡後面 */
+.about-stage {
+  position: relative;
+  margin-bottom: 6px;
+}
+.about-stage::before {
+  content: "";
+  position: absolute;
+  left: -10%;
+  top: 4%;
+  width: 62%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(closest-side, rgba(126, 145, 132, 0.30), rgba(126, 145, 132, 0));
+  border-radius: 48% 52% 55% 45% / 55% 48% 52% 45%;
+  z-index: 0;
+}
+.about-photo {
+  float: left;
+  width: 46%;
+  max-width: 250px;
+  margin: 0 8px -34px 0;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 10px 16px rgba(70, 65, 58, 0.16));
+}
+.about-intro { position: relative; z-index: 1; }
+.about-intro h3 { font-size: 25px; margin: 8px 0 14px; }
+.about-stage::after { content: ""; display: block; clear: none; }
+.about-stage + .card { position: relative; z-index: 2; }
+
+/* AI 陪伴：Q 版站在卡片旁，手勢對著卡片、身體與卡片交疊 */
+.ai-stage {
+  display: flex;
+  align-items: flex-end;
+}
+.ai-figure {
+  flex: none;
+  width: 138px;
+  margin-right: -30px;
+  margin-bottom: -4px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 8px 12px rgba(70, 65, 58, 0.20));
+}
+.ai-stage .card {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+  padding-left: 48px;
+}
+
+/* 分頁開場：文字在左、Q 版站在金線後探出來 */
+.hero-side {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  text-align: left;
+  padding: 64px 0 0;
+  border-bottom: 1px solid var(--gold-line);
+}
+.hero-side .hero-text { flex: 1; padding-bottom: 36px; }
+.hero-side .kicker { margin-bottom: 22px; }
+.hero-side h1 { font-size: 29px; margin: 0; max-width: none; }
+.hero-side .sub { margin-top: 18px; }
+.hero-figure {
+  flex: none;
+  width: 128px;
+  margin-bottom: -1px;
+  filter: drop-shadow(0 6px 10px rgba(70, 65, 58, 0.16));
+}
+
+/* ── 名銜與專長 ── */
+.cred-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cred-list li {
+  padding: 10px 0 10px 22px;
+  position: relative;
+  border-bottom: 1px solid var(--gold-line);
+}
+.cred-list li:last-child { border-bottom: none; }
+.cred-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sage);
+  transform: translateY(-50%);
+}
+
+/* ── 服務 ── */
+.svc dl {
+  margin: 20px 0 0;
+  border-top: 1px solid var(--gold-line);
+  padding-top: 18px;
+}
+.svc dt {
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: 0.12em;
+  margin-top: 14px;
+}
+.svc dt:first-child { margin-top: 0; }
+.svc dd { margin: 4px 0 0; }
+
+.chip {
+  display: inline-block;
+  font-size: 17px;
+  color: var(--clay);
+  background: var(--clay-soft);
+  border-radius: 999px;
+  padding: 2px 16px;
+}
+
+/* ── 按鈕 ── */
+.btn {
+  display: inline-block;
+  font-size: 18px;
+  color: var(--paper);
+  background: var(--ink);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 34px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.1em;
+}
+.btn:hover { background: #33453A; }
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--gold);
+}
+.btn.ghost:hover { background: var(--cream); }
+
+/* ── 四層結構 ── */
+.layer {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--gold-line);
+}
+.layer:last-of-type { border-bottom: none; }
+.layer .glyph {
+  flex: none;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Songti TC", "Kaiti TC", serif;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.layer h3 { font-size: 21px; margin: 4px 0 8px; }
+.layer p { margin: 0; color: var(--text-soft); }
+
+/* ── 聯絡 ── */
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gold-line);
+}
+.contact-row .label { color: var(--text-soft); }
+
+/* ── 文章 ── */
+.article-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--gold-line);
+  border-radius: 16px;
+  padding: 26px 28px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: var(--text);
+}
+.article-card:hover { border-color: var(--gold); }
+.article-card .meta {
+  font-size: 17px;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+.article-card h3 { font-size: 21px; margin: 0 0 8px; }
+.article-card p { margin: 0; color: var(--text-soft); }
+
+.empty {
+  text-align: center;
+  color: var(--text-soft);
+  background: var(--sage-soft);
+  border-radius: 16px;
+  padding: 44px 28px;
+}
+
+/* ── 頁尾 ── */
+footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 96px;
+  border-top: 1px solid var(--gold-line);
+  padding: 44px 24px 64px;
+  text-align: center;
+}
+footer .brand {
+  font-family: "Songti TC", "Kaiti TC", serif;
+  font-size: 19px;
+  letter-spacing: 0.24em;
+  color: var(--ink);
+}
+footer .latin {
+  display: block;
+  margin-top: 8px;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+}
+
+@media (min-width: 600px) {
+  body { font-size: 20px; }
+  .hero h1 { font-size: 35px; }
+  .section-title { font-size: 28px; }
+}
+
+@media (max-width: 520px) {
+  .ai-figure { width: 104px; margin-right: -20px; }
+  .ai-stage .card { padding-left: 38px; padding-right: 22px; }
+}
