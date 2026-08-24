@@ -425,8 +425,190 @@ p { margin: 0 0 1.2em; }
   color: var(--text-soft);
   margin-bottom: 6px;
 }
+.article-card .article-label {
+  display: inline-block;
+  margin: 2px 0 12px;
+  padding: 2px 13px;
+  border-radius: 999px;
+  background: var(--sage-soft);
+  color: var(--ink);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+}
 .article-card h3 { font-size: 21px; margin: 0 0 8px; }
 .article-card p { margin: 0; color: var(--text-soft); }
+.article-card .article-detail {
+  margin-top: 12px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+.article-card .article-detail strong { color: var(--ink); }
+.article-card .article-more {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--clay);
+  font-size: 17px;
+}
+
+/* ── 單篇文章：散文編輯版型 ── */
+.page.article-page { max-width: 980px; }
+.essay-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 340px);
+  gap: 48px;
+  align-items: center;
+  margin-top: 64px;
+  padding-bottom: 54px;
+  border-bottom: 1px solid var(--gold-line);
+}
+.essay-breadcrumb {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--text-soft);
+  font-size: 17px;
+  text-decoration: none;
+}
+.essay-breadcrumb:hover { color: var(--ink); }
+.essay-meta {
+  color: var(--gold);
+  font-size: 16px;
+  letter-spacing: 0.18em;
+}
+.essay-hero h1 {
+  margin: 14px 0 22px;
+  font-size: 38px;
+  line-height: 1.55;
+  letter-spacing: 0.08em;
+}
+.essay-lead {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 18px;
+  line-height: 1.9;
+}
+.essay-cover {
+  margin: 0;
+}
+.essay-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 1px solid var(--gold-line);
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(70, 65, 58, 0.14);
+}
+.essay-cover figcaption {
+  margin-top: 10px;
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.65;
+  text-align: center;
+}
+.essay-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-top: 42px;
+}
+.essay-body section { margin-top: 58px; }
+.essay-body section:first-child { margin-top: 0; }
+.essay-body h2 {
+  margin: 0 0 28px;
+  font-size: 27px;
+  line-height: 1.65;
+  text-align: center;
+}
+.essay-body h2::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 1px;
+  margin: 16px auto 0;
+  background: var(--gold);
+}
+.essay-body p {
+  margin-bottom: 1.35em;
+  font-size: 19px;
+  line-height: 2.05;
+}
+.essay-dialogue {
+  max-width: 590px;
+  margin: 34px 0;
+}
+.essay-dialogue.right { margin-left: auto; }
+.essay-speaker {
+  margin-bottom: 8px;
+  color: var(--clay);
+  font-size: 15px;
+  letter-spacing: 0.18em;
+}
+.essay-dialogue.right .essay-speaker { text-align: right; }
+.essay-bubble {
+  position: relative;
+  padding: 22px 26px;
+  border: 1px solid var(--gold-line);
+  border-radius: 16px;
+  background: var(--card);
+  color: var(--ink);
+  font-family: "Songti TC", "Kaiti TC", serif;
+  font-size: 20px;
+  line-height: 1.9;
+  box-shadow: 0 6px 20px rgba(70, 65, 58, 0.07);
+}
+.essay-dialogue.right .essay-bubble { background: var(--sage-soft); }
+.essay-pullquote {
+  max-width: 640px;
+  margin: 62px auto;
+  padding: 30px 22px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  color: var(--ink);
+  font-family: "Songti TC", "Kaiti TC", serif;
+  font-size: 24px;
+  line-height: 1.9;
+  text-align: center;
+}
+.sense-layers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 34px 0;
+}
+.sense-layer {
+  padding: 24px 20px;
+  border: 1px solid var(--gold-line);
+  border-radius: 16px;
+  background: var(--card);
+  text-align: center;
+}
+.sense-layer strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-family: "Songti TC", "Kaiti TC", serif;
+  font-size: 21px;
+}
+.sense-layer span {
+  color: var(--text-soft);
+  font-size: 17px;
+  line-height: 1.8;
+}
+.essay-finale {
+  margin: 76px auto 12px;
+  padding: 54px 28px;
+  border-radius: 18px;
+  background: var(--sage-soft);
+  color: var(--ink);
+  font-family: "Songti TC", "Kaiti TC", serif;
+  font-size: 25px;
+  line-height: 2;
+  text-align: center;
+}
+.essay-back {
+  margin-top: 54px;
+  text-align: center;
+}
 
 .empty {
   text-align: center;
@@ -469,4 +651,37 @@ footer .latin {
 @media (max-width: 520px) {
   .ai-figure { width: 104px; margin-right: -20px; }
   .ai-stage .card { padding-left: 38px; padding-right: 22px; }
+}
+
+@media (max-width: 820px) {
+  .essay-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 44px;
+  }
+  .essay-cover { max-width: 420px; margin: 0 auto; }
+  .sense-layers { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero-side {
+    display: block;
+  }
+  .hero-side .hero-text {
+    padding-bottom: 20px;
+  }
+  .hero-side .hero-figure {
+    display: block;
+    width: 108px;
+    margin: 0 0 -1px auto;
+  }
+  .page.article-page { padding-left: 18px; padding-right: 18px; }
+  .essay-hero h1 { font-size: 30px; line-height: 1.6; }
+  .essay-body { padding-top: 28px; }
+  .essay-body section { margin-top: 46px; }
+  .essay-body h2 { font-size: 24px; }
+  .essay-body p { font-size: 18px; line-height: 2; }
+  .essay-bubble { padding: 20px 21px; font-size: 18px; }
+  .essay-pullquote { margin: 48px auto; font-size: 21px; }
+  .essay-finale { margin-top: 58px; padding: 42px 22px; font-size: 22px; }
 }

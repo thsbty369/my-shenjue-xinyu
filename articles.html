@@ -63,7 +63,16 @@ var PLATFORMS = [
 ];
 
 var ARTICLES = [
-  /* 目前尚無文章，之後由此陣列增補 */
+  {
+    title: "讓身體抽盲盒，居然捨不得放下",
+    date: "2026-08-24",
+    source: "身覺心語",
+    category: "生命故事・身體覺察",
+    summary: "女兒在十種造型的盲盒中，一盒一盒拿起來感受。真正讓她做出選擇的，不只是重量，而是那份『捨不得放下』的感覺。",
+    insight: "大腦、身體與內在，如何一起參與我們的選擇。",
+    audience: "面對選擇時想很多，卻不確定自己真正想靠近什麼的人。",
+    url: "articles/body-sense-blind-box.html"
+  }
 ];
 
 (function () {
@@ -89,11 +98,18 @@ var ARTICLES = [
   ARTICLES.forEach(function (a) {
     var card = document.createElement("a");
     card.className = "article-card";
-    if (a.url) { card.href = a.url; card.target = "_blank"; card.rel = "noopener"; }
+    if (a.url) {
+      card.href = a.url;
+      if (/^https?:\/\//.test(a.url)) { card.target = "_blank"; card.rel = "noopener"; }
+    }
     card.innerHTML =
       '<div class="meta">' + (a.date || "") + (a.source ? "｜" + a.source : "") + "</div>" +
+      (a.category ? '<div class="article-label">' + a.category + "</div>" : "") +
       "<h3>" + a.title + "</h3>" +
-      "<p>" + (a.summary || "") + "</p>";
+      "<p>" + (a.summary || "") + "</p>" +
+      (a.insight ? '<p class="article-detail"><strong>這篇陪你看見：</strong>' + a.insight + "</p>" : "") +
+      (a.audience ? '<p class="article-detail"><strong>適合正在經歷：</strong>' + a.audience + "</p>" : "") +
+      '<span class="article-more">閱讀全文 →</span>';
     aWrap.appendChild(card);
   });
 })();
