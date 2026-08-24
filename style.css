@@ -676,6 +676,25 @@ p { margin: 0 0 1.2em; }
   text-align: center;
   box-shadow: 0 10px 30px rgba(70, 65, 58, 0.06);
 }
+.essay-figure {
+  max-width: 620px;
+  margin: 46px auto;
+}
+.essay-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--gold-line);
+  border-radius: 22px;
+  box-shadow: 0 16px 38px rgba(70, 65, 58, 0.14);
+}
+.essay-figure figcaption {
+  margin-top: 12px;
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: center;
+}
 .sense-layers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -859,6 +878,8 @@ footer .latin {
   .essay-speaker { margin-left: 12px; }
   .essay-bubble { padding: 22px 20px; font-size: 18px; }
   .essay-pullquote { margin: 48px auto; font-size: 21px; }
+  .essay-figure { margin: 38px auto; }
+  .essay-figure img { border-radius: 18px; }
   .essay-finale { margin-top: 58px; padding: 42px 22px; font-size: 22px; }
   .essay-next { margin-top: 68px; padding: 30px 20px; }
   .essay-next-grid { grid-template-columns: 1fr; }
